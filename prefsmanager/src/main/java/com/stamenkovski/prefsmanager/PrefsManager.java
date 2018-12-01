@@ -29,23 +29,30 @@ public class PrefsManager {
         editor.apply();
     }
 
-    public static <T> Object getValueFromPrefs(Context context, String key, T typeOf) {
+    public static <T> T getValueFromPrefs(Context context, String key, T typeOf) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
         if (typeOf.equals(Float.class)) {
-            return sharedPreferences.getFloat(key, 0f);
+            return (T) (Float) sharedPreferences.getFloat(key, 0f);
         } else if (typeOf.equals(Integer.class)) {
-            return sharedPreferences.getInt(key, 0);
+            return (T) (Integer) sharedPreferences.getInt(key, 0);
         } else if (typeOf.equals(Boolean.class)) {
-            return sharedPreferences.getBoolean(key, false);
+            return (T) (Boolean) sharedPreferences.getBoolean(key, false);
         } else if (typeOf.equals(Long.class)) {
-            return sharedPreferences.getLong(key, 0);
+            return (T) (Long) sharedPreferences.getLong(key, 0);
         } else if (typeOf.equals(String.class)) {
-            return sharedPreferences.getString(key, null);
+            return (T) (String) sharedPreferences.getString(key, null);
         } else {
             String json = sharedPreferences.getString(key, null);
             Type type = new TypeToken<T>() {
             }.getType();
-            return new Gson().fromJson(json, type);
+            return ((T) new Gson().fromJson(json, type));
         }
+    }
+
+    public static void removeValueFromPrefs(Context context, String key) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(key);
+        editor.apply();
     }
 }

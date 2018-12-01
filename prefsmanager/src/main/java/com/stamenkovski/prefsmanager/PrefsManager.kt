@@ -2,6 +2,7 @@ package com.stamenkovski.prefsmanager
 
 import android.content.Context
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import org.jetbrains.annotations.Nullable
 
 inline fun <reified T> Any.setValueToPrefs(context: Context, key: String, value: T) {
@@ -57,7 +58,8 @@ inline fun <reified T> Any.getValueFromPrefs(context: Context, key: String): T? 
                 if (json == null) {
                     throw Exception("Key doesn't exist in shared preferences")
                 } else {
-                    return Gson().fromJson(json, T::class.java)
+                    val type = object : TypeToken<T>() {}.type
+                    return Gson().fromJson(json, type)
                 }
 
             }

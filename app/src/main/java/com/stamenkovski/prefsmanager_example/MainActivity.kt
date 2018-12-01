@@ -6,9 +6,13 @@ import android.os.Parcelable
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import com.google.gson.Gson
 import kotlinx.android.parcel.Parcelize
 import com.stamenkovski.prefsmanager.R
+import com.stamenkovski.prefsmanager.getValueFromPrefs
+import com.stamenkovski.prefsmanager.removeValueFromPrefs
 import com.stamenkovski.prefsmanager.setValueToPrefs
+import java.io.Serializable
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,38 +21,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-/*
-
-        setValueToPrefs(
-            this, "value", import com . stamenkovski . prefsmanager . R
-                    "This is some string"
-        )
-
-        getValueFromPrefs<String>(this, "value")?.apply {
-            Log.i("STRING VALUE ", this)
-        }
 
         val userList = mutableListOf<User>()
-        userList.add(User("hh@gmail.com", "hh"))
-        userList.add(User("gg@gmail.com", "gg"))
+        userList.add(User("user@gmail.com", "user"))
+        userList.add(User("johndoe@gmail.com", "John Doe"))
+        Log.i("USERS adding ", userList.toString())
+
+        val user = User("user", "user")
+        setValueToPrefs(this, "user_one", user)
+
+        val json = Gson().toJson(user)
+        val gson = Gson().fromJson(json, User::class.java)
+        getValueFromPrefs<User>(this, "user_one")?.apply {
+            Log.i("JSON ", this.toString())
+        }
 
 
-        //setValueToPrefs(this, "user_list", userList)
-        */
-/*getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
-            Log.i("USER", this.toString())
-        }*//*
+        removeValueFromPrefs(this, "user_list")
 
-        Log.i(
-            "USER LISTING ", PrefsManager.getValueFromPrefs(
-                this,
-                "user_list",
-                MutableList::class.java
-            ).toString()
-        )
-        removeValueFromPrefs(this, "user")
-*/
+        setValueToPrefs(this, "user_list", userList)
 
+        getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
+            //Do something with the users list
+            Log.i("USER", this[0].toString())
+        }
 
     }
 

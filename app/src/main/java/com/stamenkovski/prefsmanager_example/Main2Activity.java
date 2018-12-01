@@ -11,14 +11,15 @@ import java.util.List;
 
 public class Main2Activity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        PrefsManager.setValueToPrefs(this, "key", new User("d", "d"));
+        PrefsManager.removeValueFromPrefs(this, "user");
 
-        Log.i("USER SECOND ", PrefsManager.getValueFromPrefs(this, "key", User.class).toString());
+        PrefsManager.setValueToPrefs(this, "user", new User("user@example.com", "John Doe"));
 
         List<User> users = new ArrayList<User>();
         users.add(new User("USERMAIL", "Nmae"));
@@ -26,6 +27,9 @@ public class Main2Activity extends AppCompatActivity {
 
         PrefsManager.setValueToPrefs(this, "users", users);
 
-        Log.i("USER SECOND ", PrefsManager.getValueFromPrefs(this, "users", List.class).toString());
+        //Log.i("USER LISTS SECOND ", PrefsManager.getValueFromPrefs(this, "users", User[].class).toString());
+        Log.i("USER SECOND ", PrefsManager.getValueFromPrefs(this, "user", User.class).toString());
+
+        //PrefsManager.removeValueFromPrefs(this,"user_key");
     }
 }
