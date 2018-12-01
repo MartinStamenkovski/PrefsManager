@@ -19,7 +19,6 @@ Removing value from SharedPreferences
 ```java
   PrefsManager.removeValueFromPrefs(this,"user_key");
 ```
-**We will handle Serialization and Deserialization of your object to return the correct values**
 
 **Note:**
  Your classes should conform to Parcelable or Serialazable 
