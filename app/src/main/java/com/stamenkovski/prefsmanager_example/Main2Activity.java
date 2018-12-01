@@ -1,8 +1,10 @@
-package com.stamenkovski.prefsmanager;
+package com.stamenkovski.prefsmanager_example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import com.stamenkovski.prefsmanager.PrefsManager;
+import com.stamenkovski.prefsmanager.R;
 
 import java.util.ArrayList;
 import java.util.List;

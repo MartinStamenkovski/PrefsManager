@@ -1,4 +1,4 @@
-package com.stamenkovski.prefsmanager
+package com.stamenkovski.prefsmanager_example
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import kotlinx.android.parcel.Parcelize
+import com.stamenkovski.prefsmanager.R
+import com.stamenkovski.prefsmanager.setValueToPrefs
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,26 +17,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setValueToPrefs(this, "value", "This is some string")
+/*
+
+        setValueToPrefs(
+            this, "value", import com . stamenkovski . prefsmanager . R
+                    "This is some string"
+        )
 
         getValueFromPrefs<String>(this, "value")?.apply {
             Log.i("STRING VALUE ", this)
         }
-        PrefsManager.setValueToPrefs(this, "s", false)
 
         val userList = mutableListOf<User>()
         userList.add(User("hh@gmail.com", "hh"))
         userList.add(User("gg@gmail.com", "gg"))
 
-        removeValueFromPrefs(this, "user_list")
-
-        PrefsManager.setValueToPrefs(this, "user_list", userList)
 
         //setValueToPrefs(this, "user_list", userList)
-        /*getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
+        */
+/*getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
             Log.i("USER", this.toString())
-        }*/
-        Log.i("USER LISTING ", PrefsManager.getValueFromPrefs(this, "user_list", MutableList::class.java).toString())
+        }*//*
+
+        Log.i(
+            "USER LISTING ", PrefsManager.getValueFromPrefs(
+                this,
+                "user_list",
+                MutableList::class.java
+            ).toString()
+        )
+        removeValueFromPrefs(this, "user")
+*/
+
 
     }
 

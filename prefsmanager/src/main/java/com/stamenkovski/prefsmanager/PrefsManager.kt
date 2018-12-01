@@ -67,89 +67,12 @@ inline fun <reified T> Any.getValueFromPrefs(context: Context, key: String): T? 
 }
 
 fun Any.removeValueFromPrefs(context: Context, key: String) {
-    val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
 
+    val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     sharedPreferences.edit()?.apply {
         this.remove(key)
         this.apply()
     }
 }
 
-/*class PrefsManager<T> {
-    companion object {
-        @JvmStatic
-        fun setValueToPrefs(context: Context, key: String, value: Any) {
-            val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-            sharedPreferences.edit()?.apply {
-                when (value::class.java) {
-                    Boolean::class -> {
-                        this.putBoolean(key, value as Boolean)
-                    }
-                    Float::class -> {
-                        this.putFloat(key, value as Float)
-                    }
-                    Int::class -> {
-                        this.putInt(key, value as Int)
-                    }
-                    Long::class -> {
-                        this.putLong(key, value as Long)
-                    }
-                    String::class -> {
-                        this.putString(key, value as String)
-                    }
-                    else -> {
-                        this.putString(key, Gson().toJson(value))
-                    }
-                }
-                apply()
-            }
-        }
-
-        @JvmStatic
-        @Nullable
-        inline fun <reified T : Any> getValueFromPrefs(context: Context, key: String, type: T): Any? {
-            val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-            sharedPreferences?.apply {
-                when (T::class.java) {
-                    Boolean::class -> {
-                        return this.getBoolean(key, false)
-                    }
-                    Float::class -> {
-                        return this.getFloat(key, 0f)
-                    }
-                    Int::class -> {
-                        return this.getInt(key, 0)
-                    }
-                    Long::class -> {
-                        return this.getLong(key, 0)
-                    }
-                    String::class -> {
-                        return this.getString(key, null)
-                    }
-                    else -> {
-                        val json = this.getString(key, null)
-                        if (json == null) {
-                            throw Exception("Key doesn't exist in shared preferences")
-                        } else {
-                            return Gson().fromJson(json, type::class.java)
-                        }
-
-                    }
-                }
-            }
-            return null
-        }
-
-        @JvmStatic
-        fun removeValueFromPrefs(context: Context, key: String) {
-            val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-
-            sharedPreferences.edit()?.apply {
-                this.remove(key)
-                this.apply()
-            }
-        }
-
-    }
-}*/
 
