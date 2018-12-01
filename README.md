@@ -19,6 +19,7 @@ Removing value from SharedPreferences
 ```java
   PrefsManager.removeValueFromPrefs(this,"user_key");
 ```
+**Currently in Java lists are not supported**
 
 **Note:**
  Your classes should conform to Parcelable or Serialazable 
@@ -35,4 +36,19 @@ Adding value to SharedPreferences
   userList.add(User("johndoe@gmail.com", "John Doe"))
     
   setValueToPrefs(this, "user_list", userList)
+```
+
+Getting value from SharedPreferences
+
+```kotlin
+  getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
+      //Do something with the users lis
+      Log.i("USER", this[0].toString())
+    }
+```
+
+Removing value from SharedPreferences
+
+```kotlin
+ removeValueFromPrefs(this, "user_list")
 ```
