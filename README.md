@@ -30,9 +30,9 @@ In kotlin you can use extensions or the *Java* static functions, simple usage fo
 Adding value to SharedPreferences
 
 ```kotlin
-    val userList = mutableListOf<User>()
-    userList.add(User("user@gmail.com", "user"))
-    userList.add(User("johndoe@gmail.com", "John Doe"))
+  val userList = mutableListOf<User>()
+  userList.add(User("user@gmail.com", "user"))
+  userList.add(User("johndoe@gmail.com", "John Doe"))
     
-    setValueToPrefs(this, "user_list", userList)
+  setValueToPrefs(this, "user_list", userList)
 ```
