@@ -7,7 +7,7 @@ Simple usage:
 
 *Java:*
 
-Setting value to SharedPreferences
+Adding value to SharedPreferences
 ```java
   PrefsManager.setValueToPrefs(this, "user_key", new User("user@example.com", "John Doe"));
 ```
@@ -26,3 +26,13 @@ Removing value from SharedPreferences
 In kotlin you can use extensions or the *Java* static functions, simple usage follows for **Kotlin** :)
 
 **Kotlin:**
+
+Adding value to SharedPreferences
+
+```kotlin
+    val userList = mutableListOf<User>()
+    userList.add(User("user@gmail.com", "user"))
+    userList.add(User("johndoe@gmail.com", "John Doe"))
+    
+    setValueToPrefs(this, "user_list", userList)
+```
