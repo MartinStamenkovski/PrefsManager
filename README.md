@@ -23,6 +23,6 @@ Removing value from SharedPreferences
 **Note:**
  Your classes should conform to Parcelable or Serialazable 
  
-In kotlin you can use extensions or the *Java* static functions simple usage follows for **Kotlin** :)
+In kotlin you can use extensions or the *Java* static functions, simple usage follows for **Kotlin** :)
 
-**Kotlin**
+**Kotlin:**
