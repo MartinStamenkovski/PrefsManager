@@ -1,72 +1,155 @@
 package com.stamenkovski.prefsmanager
 
 import android.content.Context
+import com.google.gson.Gson
 import org.jetbrains.annotations.Nullable
 
-fun Any.setStringValueToPrefs(context: Context, key: String, value: String) {
+inline fun <reified T> Any.setValueToPrefs(context: Context, key: String, value: T) {
     val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     sharedPreferences.edit()?.apply {
-        this.putString(key, value)
-        this.apply()
+        when (T::class) {
+            Boolean::class -> {
+                this.putBoolean(key, value as Boolean)
+            }
+            Float::class -> {
+                this.putFloat(key, value as Float)
+            }
+            Int::class -> {
+                this.putInt(key, value as Int)
+            }
+            Long::class -> {
+                this.putLong(key, value as Long)
+            }
+            String::class -> {
+                this.putString(key, value as String)
+            }
+            else -> {
+                this.putString(key, Gson().toJson(value))
+            }
+        }
+        apply()
     }
 }
 
-fun Any.setFloatValueToPrefs(context: Context, key: String, value: Float) {
-    val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-    sharedPreferences.edit()?.apply {
-        this.putFloat(key, value)
-        this.apply()
-    }
-}
-
-fun Any.setBoolValueToPrefs(context: Context, key: String, value: Boolean) {
-    val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-    sharedPreferences.edit()?.apply {
-        this.putBoolean(key, value)
-        this.apply()
-    }
-}
-
-fun Any.setIntValueToPrefs(context: Context, key: String, value: Int) {
-    val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-    sharedPreferences.edit()?.apply {
-        this.putInt(key, value)
-        this.apply()
-    }
-}
-
-fun Any.setLongValueToPrefs(context: Context, key: String, value: Long) {
-    val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-    sharedPreferences.edit()?.apply {
-        this.putLong(key, value)
-        this.apply()
-    }
-}
-
-fun Any.setMutableStringSetToPrefs(context: Context, key: String, value: MutableSet<String>) {
-    val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-    sharedPreferences.edit()?.apply {
-        this.putStringSet(key, value)
-        this.apply()
-    }
-}
 
 @Nullable
-fun Any.getStringValueFromPrefs(context: Context, key: String, defaultValue: String? = null): String? {
-
+inline fun <reified T> Any.getValueFromPrefs(context: Context, key: String): T? {
     val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     sharedPreferences?.apply {
-        return sharedPreferences.getString(key, defaultValue)
+        when (T::class) {
+            Boolean::class -> {
+                return this.getBoolean(key, false) as T
+            }
+            Float::class -> {
+                return this.getFloat(key, 0f) as T
+            }
+            Int::class -> {
+                return this.getInt(key, 0) as T
+            }
+            Long::class -> {
+                return this.getLong(key, 0) as T
+            }
+            String::class -> {
+                return this.getString(key, null) as T
+            }
+            else -> {
+                val json = this.getString(key, null)
+                if (json == null) {
+                    throw Exception("Key doesn't exist in shared preferences")
+                } else {
+                    return Gson().fromJson(json, T::class.java)
+                }
+
+            }
+        }
     }
     return null
 }
 
-@Nullable
-fun Any.getFloatValueFromPrefs(context: Context, key: String, defaultValue: Float = 0f): Float? {
-
+fun Any.removeValueFromPrefs(context: Context, key: String) {
     val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-    sharedPreferences?.apply {
-        return sharedPreferences.getFloat(key, defaultValue)
+
+    sharedPreferences.edit()?.apply {
+        this.remove(key)
+        this.apply()
     }
-    return null
 }
+
+/*class PrefsManager<T> {
+    companion object {
+        @JvmStatic
+        fun setValueToPrefs(context: Context, key: String, value: Any) {
+            val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
+            sharedPreferences.edit()?.apply {
+                when (value::class.java) {
+                    Boolean::class -> {
+                        this.putBoolean(key, value as Boolean)
+                    }
+                    Float::class -> {
+                        this.putFloat(key, value as Float)
+                    }
+                    Int::class -> {
+                        this.putInt(key, value as Int)
+                    }
+                    Long::class -> {
+                        this.putLong(key, value as Long)
+                    }
+                    String::class -> {
+                        this.putString(key, value as String)
+                    }
+                    else -> {
+                        this.putString(key, Gson().toJson(value))
+                    }
+                }
+                apply()
+            }
+        }
+
+        @JvmStatic
+        @Nullable
+        inline fun <reified T : Any> getValueFromPrefs(context: Context, key: String, type: T): Any? {
+            val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
+            sharedPreferences?.apply {
+                when (T::class.java) {
+                    Boolean::class -> {
+                        return this.getBoolean(key, false)
+                    }
+                    Float::class -> {
+                        return this.getFloat(key, 0f)
+                    }
+                    Int::class -> {
+                        return this.getInt(key, 0)
+                    }
+                    Long::class -> {
+                        return this.getLong(key, 0)
+                    }
+                    String::class -> {
+                        return this.getString(key, null)
+                    }
+                    else -> {
+                        val json = this.getString(key, null)
+                        if (json == null) {
+                            throw Exception("Key doesn't exist in shared preferences")
+                        } else {
+                            return Gson().fromJson(json, type::class.java)
+                        }
+
+                    }
+                }
+            }
+            return null
+        }
+
+        @JvmStatic
+        fun removeValueFromPrefs(context: Context, key: String) {
+            val sharedPreferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
+
+            sharedPreferences.edit()?.apply {
+                this.remove(key)
+                this.apply()
+            }
+        }
+
+    }
+}*/
+
