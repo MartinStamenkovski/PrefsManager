@@ -30,7 +30,7 @@ And you will get list of users like this
 ```JSON
 [User(userEmail=user@gmail.com, userName=user), User(userEmail=johndoe@gmail.com, userName=John Doe)]
 ```
-You will need to specify TypeToken because Java doesn't provide a way to represent generic types.
+**You will need to specify TypeToken because Java doesn't provide a way to represent generic types.**
 
 * Remove value from SharedPreferences
 ```java
