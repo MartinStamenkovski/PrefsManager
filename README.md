@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com/guide/)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com)
+[![sad](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweettext=https://github.com/MartinStamenkovski/PrefsManager)
 
 
 PrefsManager is library for Android made for easy usage of SharedPreferences.
