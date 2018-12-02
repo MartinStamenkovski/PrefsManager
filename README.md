@@ -49,7 +49,7 @@ And to retrieve the boolean value *(the third argument is default value)*
  
 In kotlin you can use extensions or the *Java* static functions, simple usage follows for **Kotlin** :)
 
-**Kotlin:**
+**Kotlin Extensions:**
 
 Add value to SharedPreferences
 
@@ -58,13 +58,13 @@ Add value to SharedPreferences
   userList.add(User("user@gmail.com", "user"))
   userList.add(User("johndoe@gmail.com", "John Doe"))
     
-  setValueToPrefs(this, "user_list", userList)
+  setValueToPrefs(this, "users", userList)
 ```
 
 Get value from SharedPreferences
 
 ```kotlin
-  getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
+  getValueFromPrefs<MutableList<User>>(this, "users")?.apply {
       //Do something with the users lis
       Log.i("USER", this[0].toString())
     }
@@ -73,5 +73,5 @@ Get value from SharedPreferences
 Remove value from SharedPreferences
 
 ```kotlin
- removeValueFromPrefs(this, "user_list")
+ removeValueFromPrefs(this, "users")
 ```
