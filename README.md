@@ -8,7 +8,7 @@ Small helper library for working with SharedPreferences.
 
 
 **Note:**
- Your classes should conform to Parcelable or Serialazable 
+ Your classes should conform to Parcelable or Serialazable :heavy_exclamation_mark:
  
  If you use parcelable in Kotlin you will need to add the experimental feature in the application build.gradle file
  ```gradle
@@ -99,7 +99,7 @@ If you want to specify default value if the key doesn't exists you can do someth
       Log.i("USER", "$this")
     }
 ```
-You need to add ``` ? ``` to make the value optional
+You need to add ``` ? ``` to make the value optional or else you can't pass ` null ` as default value
 
 # Download
 [![](https://jitpack.io/v/martinstamenkovski/prefsmanager.svg)](https://jitpack.io/#martinstamenkovski/prefsmanager)
