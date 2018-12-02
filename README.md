@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com/guide/)
-[![sad](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](tweet?url={https://github.com/MartinStamenkovski/PrefsManager}&text={PrefsManager Android}&v&hashtags={Android,SharedPreferences})
+[![sad](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https://github.com/MartinStamenkovski/PrefsManager&text=PrefsManager%20Android&hashtags=Android,SharedPreferences,Kotlin,Java)
 
 
 PrefsManager is library for Android made for easy usage of SharedPreferences.
