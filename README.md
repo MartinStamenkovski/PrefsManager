@@ -24,7 +24,7 @@ data class User(val userEmail: String, val userName: String) : Parcelable
 
 **To keep it simple in Java we have made different functions for all the objects**
 
-*Java:*
+**Java:**
 
 * Add List of Users to SharedPreferences
 ```java
