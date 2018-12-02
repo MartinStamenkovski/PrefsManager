@@ -13,7 +13,7 @@ Simple usage:
 
 *Java:*
 
-Add List of Users to SharedPreferences
+* Add List of Users to SharedPreferences
 ```java
   List<User> users = new ArrayList<User>();
   users.add(new User("user@gmail", "user"));
@@ -21,7 +21,7 @@ Add List of Users to SharedPreferences
 
   PrefsManager.setObject(this, "users", users);
 ```
-Get the Users from SharedPreferences
+* Get the Users from SharedPreferences
 ```java
   PrefsManager.getObject(this, "users", new TypeToken<List<User>>() {}.getType());
 ```
@@ -32,16 +32,16 @@ And you will get list of users like this
 ```
 You will need to specify TypeToken because Java doesn't provide a way to represent generic types.
 
-Remove value from SharedPreferences
+* Remove value from SharedPreferences
 ```java
   PrefsManager.removeValueFromPrefs(this,"user_key");
 ```
 
-Add boolean value to SharedPreferences
+* Add boolean value to SharedPreferences
 ```java
   PrefsManager.setBooleanValue(this, "did_launch", false);
 ```
-And to retrieve the boolean value *(the third argument is default value)*
+* And to retrieve the boolean value *(the third argument is default value)*
 ```java
   PrefsManager.getBooleanValue(this, "did_launch", true);
 ```
@@ -51,7 +51,7 @@ In kotlin you can use extensions or the *Java* static functions, simple usage fo
 
 **Kotlin Extensions:**
 
-Add value to SharedPreferences
+* Add value to SharedPreferences
 
 ```kotlin
   val userList = mutableListOf<User>()
@@ -61,7 +61,7 @@ Add value to SharedPreferences
   setValueToPrefs(this, "users", userList)
 ```
 
-Get value from SharedPreferences
+* Get value from SharedPreferences
 
 ```kotlin
   getValueFromPrefs<MutableList<User>>(this, "users")?.apply {
@@ -70,7 +70,7 @@ Get value from SharedPreferences
     }
 ```
 
-Remove value from SharedPreferences
+* Remove value from SharedPreferences
 
 ```kotlin
  removeValueFromPrefs(this, "users")
