@@ -46,7 +46,7 @@ And you will get list of users like this
 ```
 [User(userEmail=user@gmail.com, userName=user), User(userEmail=johndoe@gmail.com, userName=John Doe)]
 ```
-**You will need to specify TypeToken because Java doesn't provide a way to represent generic types.**
+:heavy_exclamation_mark: **You will need to specify TypeToken because Java doesn't provide a way to represent generic types.** :heavy_exclamation_mark:
 
 * Remove value from SharedPreferences
 ```java
