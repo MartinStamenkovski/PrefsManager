@@ -3,6 +3,7 @@ package com.stamenkovski.prefsmanager_example;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import com.google.gson.reflect.TypeToken;
 import com.stamenkovski.prefsmanager.PrefsManager;
 import com.stamenkovski.prefsmanager.R;
 
@@ -17,19 +18,21 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        PrefsManager.removeValueFromPrefs(this, "user");
-
-        PrefsManager.setValueToPrefs(this, "user", new User("user@example.com", "John Doe"));
 
         List<User> users = new ArrayList<User>();
-        users.add(new User("USERMAIL", "Nmae"));
-        users.add(new User("MAILUSER", "nameuser"));
+        users.add(new User("user@example.com", "user"));
+        users.add(new User("johndoe@gmail.com", "John Doe"));
 
-        PrefsManager.setValueToPrefs(this, "users", users);
+        PrefsManager.setObject(this, "users", users);
 
-        //Log.i("USER LISTS SECOND ", PrefsManager.getValueFromPrefs(this, "users", User[].class).toString());
-        Log.i("USER SECOND ", PrefsManager.getValueFromPrefs(this, "user", User.class).toString());
+        Log.i("USERS ", PrefsManager.getObject(this, "users", new TypeToken<List<User>>() {
+        }.getType()).toString());
 
-        //PrefsManager.removeValueFromPrefs(this,"user_key");
+
+        PrefsManager.setBooleanValue(this, "is_on", false);
+
+        PrefsManager.getBooleanValue(this, "is_on", false);
+
+
     }
 }

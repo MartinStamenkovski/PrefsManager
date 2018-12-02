@@ -21,29 +21,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val userList = mutableListOf<User>()
         userList.add(User("user@gmail.com", "user"))
         userList.add(User("johndoe@gmail.com", "John Doe"))
-        Log.i("USERS adding ", userList.toString())
-
-        val user = User("user", "user")
-        setValueToPrefs(this, "user_one", user)
-
-        val json = Gson().toJson(user)
-        val gson = Gson().fromJson(json, User::class.java)
-        getValueFromPrefs<User>(this, "user_one")?.apply {
-            Log.i("JSON ", this.toString())
-        }
 
 
         removeValueFromPrefs(this, "user_list")
 
-        setValueToPrefs(this, "user_list", userList)
+        //setValueToPrefs(this, "user_list", userList)
 
-        getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
+        getValueFromPrefs<MutableList<User>?>(this, "user_list", null).apply {
             //Do something with the users list
-            Log.i("USER", this[0].toString())
+            Log.i("USER", "$this")
+        }
+
+        setValueToPrefs(this, "is", false)
+
+        getValueFromPrefs(this, "is", false)?.apply {
+            Log.i("BOOLEAN", "$this")
+        }
+
+
+        getValueFromPrefs<String?>(this, "string", null).apply {
+
+        }
+        getValueFromPrefs(this, "float", 0f)?.apply {
+
         }
 
     }
