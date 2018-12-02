@@ -38,6 +38,8 @@ data class User(val userEmail: String, val userName: String) : Parcelable
   PrefsManager.setObject(this, "users", users);
 ```
 * Get the Users from SharedPreferences
+
+:heavy_exclamation_mark: **You will need to specify TypeToken because Java doesn't provide a way to represent generic types.** :heavy_exclamation_mark:
 ```java
   PrefsManager.getObject(this, "users", new TypeToken<List<User>>() {}.getType());
 ```
@@ -46,7 +48,6 @@ And you will get list of users like this
 ```
 [User(userEmail=user@gmail.com, userName=user), User(userEmail=johndoe@gmail.com, userName=John Doe)]
 ```
-:heavy_exclamation_mark: **You will need to specify TypeToken because Java doesn't provide a way to represent generic types.** :heavy_exclamation_mark:
 
 * Remove value from SharedPreferences
 ```java
