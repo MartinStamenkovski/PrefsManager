@@ -6,6 +6,19 @@ Small helper library for working with SharedPreferences.
 
 **Note:**
  Your classes should conform to Parcelable or Serialazable 
+ 
+ If you use parcelable in Kotlin you will need to add the experimental feature in the application build.gralde file
+ ```gradle
+ androidExtensions {
+   experimental = true
+  }
+ ```
+ And use it like this
+ ```kotlin
+@Parcelize
+data class User(val userEmail: String, val userName: String) : Parcelable
+ ```
+ 
 
 # Simple Usage
 
