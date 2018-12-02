@@ -7,15 +7,15 @@ Simple usage:
 
 *Java:*
 
-Adding value to SharedPreferences
+Add value to SharedPreferences
 ```java
   PrefsManager.setValueToPrefs(this, "user_key", new User("user@example.com", "John Doe"));
 ```
-Getting value from SharedPreferences
+Get value from SharedPreferences
 ```java
   PrefsManager.getValueFromPrefs(this, "user_key", User.class)
 ```
-Removing value from SharedPreferences
+Remove value from SharedPreferences
 ```java
   PrefsManager.removeValueFromPrefs(this,"user_key");
 ```
@@ -28,7 +28,7 @@ In kotlin you can use extensions or the *Java* static functions, simple usage fo
 
 **Kotlin:**
 
-Adding value to SharedPreferences
+Add value to SharedPreferences
 
 ```kotlin
   val userList = mutableListOf<User>()
@@ -38,7 +38,7 @@ Adding value to SharedPreferences
   setValueToPrefs(this, "user_list", userList)
 ```
 
-Getting value from SharedPreferences
+Get value from SharedPreferences
 
 ```kotlin
   getValueFromPrefs<MutableList<User>>(this, "user_list")?.apply {
@@ -47,7 +47,7 @@ Getting value from SharedPreferences
     }
 ```
 
-Removing value from SharedPreferences
+Remove value from SharedPreferences
 
 ```kotlin
  removeValueFromPrefs(this, "user_list")
