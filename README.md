@@ -7,7 +7,7 @@ Small helper library for working with SharedPreferences.
 **Note:**
  Your classes should conform to Parcelable or Serialazable 
 
-Simple usage:
+# Simple Usage
 
 **To keep it simple in Java we have made different functions for all the objects**
 
@@ -30,7 +30,7 @@ And you will get list of users like this
 ```JSON
 [User(userEmail=user@gmail.com, userName=user), User(userEmail=johndoe@gmail.com, userName=John Doe)]
 ```
-You will need to specify TypeToken because Java doesn't provide a way to represent generic types.
+**You will need to specify TypeToken because Java doesn't provide a way to represent generic types.**
 
 * Remove value from SharedPreferences
 ```java
@@ -85,3 +85,19 @@ If you want to specify default value if the key doesn't exists you can do someth
 ```
 You need to add ``` ? ``` to make the value optional
 
+# Download
+1. Add JitPack to your build file
+```gradle
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+   }
+}
+```
+2. Add the dependency
+```gradle
+dependencies {
+    implementation 'com.github.martinstamenkovski:prefsmanager:1.1.1'
+  }
+```
