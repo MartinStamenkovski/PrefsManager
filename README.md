@@ -102,6 +102,8 @@ If you want to specify default value if the key doesn't exists you can do someth
 You need to add ``` ? ``` to make the value optional
 
 # Download
+[![](https://jitpack.io/v/martinstamenkovski/prefsmanager.svg)](https://jitpack.io/#martinstamenkovski/prefsmanager)
+
 1. Add JitPack to your project build.gradle
 ```gradle
 allprojects {
