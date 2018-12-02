@@ -99,7 +99,7 @@ If you want to specify default value if the key doesn't exists you can do someth
 You need to add ``` ? ``` to make the value optional
 
 # Download
-1. Add JitPack to your build file
+1. Add JitPack to your project build.gradle
 ```gradle
 allprojects {
   repositories {
@@ -108,7 +108,7 @@ allprojects {
    }
 }
 ```
-2. Add the dependency in the gradle
+2. Add the dependency in the application build.gradle
 ```gradle
 dependencies {
     implementation 'com.github.martinstamenkovski:prefsmanager:1.1.1'
