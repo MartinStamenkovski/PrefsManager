@@ -60,7 +60,7 @@ And you will get list of users like this
 ```
 
  
-In kotlin you can use extensions or the *Java* static functions, simple usage follows for **Kotlin** :)
+In Kotlin you can use extensions or the *Java* static functions, simple usage follows for **Kotlin** :)
 
 **Kotlin Extensions:**
 
