@@ -7,7 +7,7 @@ Small helper library for working with SharedPreferences.
 **Note:**
  Your classes should conform to Parcelable or Serialazable 
 
-Simple usage:
+# Simple Usage
 
 **To keep it simple in Java we have made different functions for all the objects**
 
