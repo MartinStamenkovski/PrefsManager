@@ -75,3 +75,13 @@ Remove value from SharedPreferences
 ```kotlin
  removeValueFromPrefs(this, "users")
 ```
+If you want to specify default value if the key doesn't exists you can do something like this
+
+```kotlin
+  getValueFromPrefs<MutableList<User>?>(this, "users", null).apply {
+      //The users may be null
+      Log.i("USER", "$this")
+    }
+```
+You need to add ``` ? ``` to make the value optional
+
