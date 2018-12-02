@@ -41,11 +41,7 @@ class MainActivity : AppCompatActivity() {
             Log.i("BOOLEAN", "$this")
         }
 
-
         getValueFromPrefs<String?>(this, "string", null).apply {
-
-        }
-        getValueFromPrefs(this, "float", 0f)?.apply {
 
         }
 
