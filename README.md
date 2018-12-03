@@ -1,6 +1,9 @@
 # PrefsManager
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com/guide/)
+[![sad](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https://github.com/MartinStamenkovski/PrefsManager&text=PrefsManager%20Android&hashtags=Android,SharedPreferences,Kotlin,Java)
+
 
 PrefsManager is library for Android made for easy usage of SharedPreferences.
 
@@ -82,7 +85,7 @@ In Kotlin you can use extensions or the *Java* static functions, simple usage fo
 
 ```kotlin
   getValueFromPrefs<MutableList<User>>(this, "users")?.apply {
-      //Do something with the users lis
+      //Do something with the users list
       Log.i("USER", this[0].toString())
     }
 ```
